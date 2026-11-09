@@ -1,0 +1,9 @@
+IMPLEMENTATION NOTES
+
+- Original visual references are retained under history-screen-ui-v3/ for comparison.
+- Open index.html to start; all primary screens are also standalone HTML files.
+- Top navigation is unnumbered.
+- Welcome background introduction plays automatically, muted and looping. "Watch the introduction" opens the film player, with sound controls.
+- Milestone timeline uses the ten verified DAW dates and descriptions from the client brief.
+- Every timeline and era image slot now uses a supplied photograph with contextual captions. Archives displays six archival photographs with matching categories and enlarged views.
+- Windows Edge kiosk launcher and shortcut scripts are included; test them on Windows.

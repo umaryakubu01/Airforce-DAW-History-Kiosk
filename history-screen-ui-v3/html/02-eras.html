@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><title>02-eras.html</title
+  ><style>
+    :root {
+      --bg: #060b14;
+      --s1: #0c1624;
+      --s2: #122034;
+      --ln: rgba(255, 255, 255, 0.09);
+      --tx: #e9edf3;
+      --mu: #8c9db1;
+      --br: #d6b566;
+      --br2: #a8863a;
+      --bl: #5b8fcb;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: var(--tx);
+      font:
+        400 30px/1.45 Inter,
+        sans-serif;
+      background:
+        radial-gradient(1100px 700px at 88% -8%, #15305a 0, transparent 62%),
+        radial-gradient(900px 600px at -5% 112%, #2a200c 0, transparent 60%),
+        var(--bg);
+    }
+    body {
+      position: relative;
+    }
+    body:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.025) 0 1px,
+        transparent 1px 120px
+      );
+      pointer-events: none;
+    }
+    .serif,
+    h1,
+    h2 {
+      font-family: "Bitstream Charter", Charter, Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+    .top {
+      position: relative;
+      height: 104px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--ln);
+    }
+    .brand {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      width: 470px;
+    }
+    .brand img {
+      height: 66px;
+    }
+    .brand b {
+      display: block;
+      font: 600 26px Inter;
+      line-height: 1.2;
+    }
+    .brand span {
+      font: 500 18px Inter;
+      letter-spacing: 0.16em;
+      color: var(--br);
+      text-transform: uppercase;
+    }
+    .steps {
+      display: flex;
+      gap: 8px;
+    }
+    .st {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 104px;
+      padding: 0 18px;
+      font: 500 21px Inter;
+      color: var(--mu);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+    }
+    .st i {
+      font-style: normal;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+    }
+    .st.on {
+      color: var(--tx);
+      border-color: var(--br);
+    }
+    .st.on i {
+      background: var(--br);
+      color: #1a1405;
+      border-color: var(--br);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      height: 76px;
+      padding: 0 34px;
+      font: 600 26px Inter;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--tx);
+    }
+    .btn.gold {
+      background: linear-gradient(180deg, #e3c57a, #b8923f);
+      border-color: #e3c57a;
+      color: #1a1405;
+    }
+    .home {
+      width: 200px;
+      justify-content: center;
+      border-color: rgba(214, 181, 102, 0.6);
+      color: var(--br);
+    }
+    .eb {
+      font: 600 20px Inter;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--br);
+    }
+    .gl {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.025)
+      );
+      border: 1px solid var(--ln);
+      border-radius: 14px;
+    }
+    .ph {
+      position: relative;
+      border: 1.5px dashed rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.035) 0 12px,
+          transparent 12px 24px
+        ),
+        linear-gradient(160deg, #10203a, #0a1424);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #93a5ba;
+      text-align: center;
+    }
+    .ph b {
+      font: 600 20px Inter;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .ph i {
+      font: 400 21px Inter;
+      font-style: normal;
+      opacity: 0.85;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 46px;
+      padding: 0 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(214, 181, 102, 0.5);
+      color: var(--br);
+      font: 600 19px Inter;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 64px;
+      padding: 0 26px;
+      border-radius: 40px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      font: 500 23px Inter;
+      color: var(--tx);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .chip.on {
+      background: var(--br);
+      border-color: var(--br);
+      color: #1a1405;
+      font-weight: 600;
+    }
+    .foot {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 128px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      background: linear-gradient(
+        0deg,
+        rgba(6, 11, 20, 0.96),
+        rgba(6, 11, 20, 0.6)
+      );
+      border-top: 1px solid var(--ln);
+    }
+    .ghost {
+      font-family: "Bitstream Charter", Georgia, serif;
+      font-weight: 700;
+      line-height: 0.8;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(214, 181, 102, 0.28);
+    }
+  </style>
+  <body>
+    <div class="top">
+      <div class="brand">
+        <img src="../assets/afcsc-crest.png" alt="" />
+        <div>
+          <b>Department of Air Warfare</b><span>Hall of Fame · History</span>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="st"><i>1</i>Welcome</div>
+        <div class="st on"><i>2</i>Eras</div>
+        <div class="st"><i>3</i>Timeline</div>
+        <div class="st"><i>4</i>Films</div>
+        <div class="st"><i>5</i>Archives</div>
+      </div>
+      <div style="width: 300px; text-align: right">
+        <button class="btn home">
+          <svg
+            width="34"
+            height="34"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10" /></svg
+          >Home
+        </button>
+      </div>
+    </div>
+    <div style="padding: 34px 56px 0">
+      <div class="eb">Step 2 · Choose where to begin</div>
+      <h1 style="font-size: 68px; margin: 8px 0 24px">
+        Four eras of the Department
+      </h1>
+      <div style="display: flex; gap: 24px">
+        <div
+          class="gl"
+          style="
+            flex: 1;
+            height: 640px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <div
+            class="ghost"
+            style="
+              position: absolute;
+              right: 14px;
+              bottom: 130px;
+              font-size: 170px;
+              -webkit-text-stroke: 1.5px rgba(214, 181, 102, 0.22);
+            "
+          >
+            1978
+          </div>
+          <div class="ph" style="height: 140px; border-radius: 10px">
+            <span
+              ><svg
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="9" cy="10" r="1.6" />
+                <path d="M21 16l-5-5-8 8" /></svg></span
+            ><b style="font-size: 17px">Era photo placeholder</b>
+          </div>
+          <div class="eb" style="margin-top: 22px">Era 01 · 2 milestones</div>
+          <h2 style="font-size: 54px; line-height: 1.05; margin: 10px 0 8px">
+            Foundation
+          </h2>
+          <div class="serif" style="font-size: 38px; color: var(--br)">
+            1978 – 1979
+          </div>
+          <div
+            style="
+              font-size: 23px;
+              color: var(--mu);
+              margin-top: 16px;
+              position: relative;
+            "
+          >
+            1978 · 1979
+          </div>
+          <button
+            class="btn gold"
+            style="margin-top: auto; width: 100%; height: 84px"
+          >
+            Open era<svg
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="gl"
+          style="
+            flex: 1;
+            height: 640px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <div
+            class="ghost"
+            style="
+              position: absolute;
+              right: 14px;
+              bottom: 130px;
+              font-size: 170px;
+              -webkit-text-stroke: 1.5px rgba(214, 181, 102, 0.22);
+            "
+          >
+            1986
+          </div>
+          <div class="ph" style="height: 140px; border-radius: 10px">
+            <span
+              ><svg
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="9" cy="10" r="1.6" />
+                <path d="M21 16l-5-5-8 8" /></svg></span
+            ><b style="font-size: 17px">Era photo placeholder</b>
+          </div>
+          <div class="eb" style="margin-top: 22px">Era 02 · 2 milestones</div>
+          <h2 style="font-size: 54px; line-height: 1.05; margin: 10px 0 8px">
+            Move to Jaji
+          </h2>
+          <div class="serif" style="font-size: 38px; color: var(--br)">
+            1986 – 1987
+          </div>
+          <div
+            style="
+              font-size: 23px;
+              color: var(--mu);
+              margin-top: 16px;
+              position: relative;
+            "
+          >
+            1986 · 1986–87
+          </div>
+          <button
+            class="btn"
+            style="margin-top: auto; width: 100%; height: 84px"
+          >
+            Open era<svg
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="gl"
+          style="
+            flex: 1;
+            height: 640px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <div
+            class="ghost"
+            style="
+              position: absolute;
+              right: 14px;
+              bottom: 130px;
+              font-size: 170px;
+              -webkit-text-stroke: 1.5px rgba(214, 181, 102, 0.22);
+            "
+          >
+            2000
+          </div>
+          <div class="ph" style="height: 140px; border-radius: 10px">
+            <span
+              ><svg
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="9" cy="10" r="1.6" />
+                <path d="M21 16l-5-5-8 8" /></svg></span
+            ><b style="font-size: 17px">Era photo placeholder</b>
+          </div>
+          <div class="eb" style="margin-top: 22px">Era 03 · 3 milestones</div>
+          <h2 style="font-size: 54px; line-height: 1.05; margin: 10px 0 8px">
+            Growth
+          </h2>
+          <div class="serif" style="font-size: 38px; color: var(--br)">
+            2000 – 2019
+          </div>
+          <div
+            style="
+              font-size: 23px;
+              color: var(--mu);
+              margin-top: 16px;
+              position: relative;
+            "
+          >
+            2000 · 2002 · 2019
+          </div>
+          <button
+            class="btn"
+            style="margin-top: auto; width: 100%; height: 84px"
+          >
+            Open era<svg
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="gl"
+          style="
+            flex: 1;
+            height: 640px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <div
+            class="ghost"
+            style="
+              position: absolute;
+              right: 14px;
+              bottom: 130px;
+              font-size: 170px;
+              -webkit-text-stroke: 1.5px rgba(214, 181, 102, 0.22);
+            "
+          >
+            2024
+          </div>
+          <div class="ph" style="height: 140px; border-radius: 10px">
+            <span
+              ><svg
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="9" cy="10" r="1.6" />
+                <path d="M21 16l-5-5-8 8" /></svg></span
+            ><b style="font-size: 17px">Era photo placeholder</b>
+          </div>
+          <div class="eb" style="margin-top: 22px">Era 04 · 3 milestones</div>
+          <h2 style="font-size: 54px; line-height: 1.05; margin: 10px 0 8px">
+            Today
+          </h2>
+          <div class="serif" style="font-size: 38px; color: var(--br)">
+            2024
+          </div>
+          <div
+            style="
+              font-size: 23px;
+              color: var(--mu);
+              margin-top: 16px;
+              position: relative;
+            "
+          >
+            2024 · 2024 · 2024
+          </div>
+          <button
+            class="btn"
+            style="margin-top: auto; width: 100%; height: 84px"
+          >
+            Open era<svg
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <button class="btn">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M15 5l-7 7 7 7" /></svg
+        >Welcome</button
+      ><span style="font-size: 24px; color: var(--mu)"
+        >Tap an era to enter its milestones</span
+      ><button class="btn">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="6" cy="18" r="2.5" />
+          <circle cx="18" cy="6" r="2.5" />
+          <path d="M8.5 18H15a3 3 0 000-6H9a3 3 0 010-6h6.5" /></svg
+        >See all milestones at a glance
+      </button>
+    </div>
+  </body>
+</html>

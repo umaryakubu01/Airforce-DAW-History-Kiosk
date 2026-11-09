@@ -1,0 +1,225 @@
+/* Faithful extensions to the supplied 1920 × 1080 visual reference. */
+.ph.has-photo {
+  border: 1px solid rgba(214, 181, 102, 0.3);
+  background: #080f1b;
+  overflow: hidden;
+  gap: 0;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+.ph.has-photo img {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: contain;
+}
+.photo-caption {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 12px;
+  background: #101c2c;
+  color: #ced8e5;
+  font:
+    400 17px/1.3 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+}
+.st i {
+  display: none !important;
+}
+.st {
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+.st:hover {
+  color: #fff;
+}
+.steps {
+  gap: 8px;
+}
+button,
+.chip,
+[data-action],
+.gl[data-index] {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:focus-visible,
+.chip:focus-visible,
+.st:focus-visible,
+[data-index]:focus-visible {
+  outline: 3px solid #e3c57a;
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.chip {
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+/* Explicit Welcome layers keep every control above the decorative video. */
+#welcome-backdrop{position:absolute;inset:104px 0 0;z-index:0;overflow:hidden;pointer-events:none;background:#060b14 url('../assets/posters/intro.jpg') center/cover no-repeat}
+#ambient-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#ambient-video::-webkit-media-controls{display:none!important}
+#ambient-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,11,20,.8),transparent 30%),linear-gradient(90deg,rgba(6,11,20,.94) 0%,rgba(6,11,20,.84) 42%,rgba(6,11,20,.35) 75%,rgba(6,11,20,.28));pointer-events:none}
+.video-unavailable #ambient-video{visibility:hidden}
+.welcome-content,.welcome-statistics{z-index:2}
+.top{z-index:3}
+#daw-player {
+  position: fixed;
+  inset: 0;
+  background: #050912;
+  z-index: 999;
+  color: #e9edf3;
+  font-family: Inter, Arial, sans-serif;
+}
+#daw-player video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #050912;
+}
+#daw-player .player-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 56px;
+  background: linear-gradient(#050912d9, transparent);
+}
+#daw-player .player-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 35px 56px;
+  background: linear-gradient(transparent, #050912ee);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+#daw-player .player-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+#daw-player .player-actions button,
+#daw-player .player-top button {
+  border: 1px solid #d6b56680;
+  border-radius: 10px;
+  background: #0c1624cc;
+  color: #fff;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#daw-player .player-actions .primary {
+  background: #d6b566;
+  color: #15130d;
+  font-weight: 700;
+}
+#daw-player input[type="range"] {
+  width: 100%;
+  accent-color: #d6b566;
+  cursor: pointer;
+}
+#daw-player .player-title {
+  font-family: Georgia, serif;
+  font-size: 44px;
+}
+#daw-player .player-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+#daw-player button:focus-visible {
+  outline: 3px solid white;
+}
+#daw-modal {
+  position: fixed;
+  inset: 0;
+  background: #03060bdc;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px;
+}
+#daw-modal > div {
+  width: 1050px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 38px;
+  background: #111c2c;
+  border: 1px solid #d6b56677;
+  border-radius: 18px;
+}
+#daw-modal button {
+  float: right;
+  font-size: 25px;
+  padding: 10px 20px;
+  background: #d6b566;
+  border: 0;
+  border-radius: 8px;
+}
+#daw-modal h2 {
+  font-size: 46px;
+  margin: 12px 0;
+}
+/* Keep the scaled canvas fixed so keyboard focus cannot scroll it offscreen. */
+html{width:100%;height:100%;overflow:hidden}
+body{position:fixed;left:0;top:0;transform-origin:top left;transform:scale(var(--screen-scale,1))}
+
+/* Restrained, one-time motion; the video supplies the continuous movement. */
+@keyframes museum-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes museum-fade{from{opacity:0}to{opacity:1}}
+@keyframes museum-refresh{from{opacity:.25}to{opacity:1}}
+.museum-reveal{animation:museum-reveal 600ms cubic-bezier(.2,.65,.3,1) var(--reveal-delay,0ms) backwards}
+.museum-reveal.fade-only,.welcome-content>.eb,.welcome-content>p{animation-name:museum-fade}
+.content-refresh{animation:museum-refresh 240ms ease-out}
+.st{transition:color 180ms ease,border-color 180ms ease,background-color 180ms ease}
+.st:hover,.st:focus-visible{border-bottom-color:var(--br)}
+.btn,.chip,.interactive-card,.milestone-row,#daw-player button,#daw-modal button{transition:border-color 180ms ease,background-color 180ms ease,color 180ms ease,opacity 140ms ease}
+.interactive-card:hover,.interactive-card:focus-visible,.interactive-card:focus-within{border-color:rgba(214,181,102,.75)!important}
+.interactive-card:active,.btn:active,.chip:active,.st:active,#daw-player button:active,#daw-modal button:active{opacity:.78}
+[role=button]:focus-visible{outline:3px solid #e3c57a;outline-offset:4px}
+.milestone-row:active{background-color:rgba(214,181,102,.12)!important}
+.milestone-row>*{transition:color 180ms ease}
+.filter-leaving{opacity:0;pointer-events:none;animation:none!important}
+#daw-player,#daw-modal{animation:museum-fade 220ms ease-out;transition:opacity 180ms ease}
+#daw-player .player-top,#daw-player .player-bottom{animation:museum-reveal 400ms ease-out}
+#daw-player.is-closing,#daw-modal.is-closing{opacity:0;pointer-events:none;animation:none}
+#daw-player button[aria-pressed=true]{border-color:#d6b566}
+#daw-player input:disabled{opacity:.4;cursor:default}
+/* Button feedback preserves the existing colors and does not shift layout. */
+:is(.btn,#daw-player button,#daw-modal button):not(:disabled){
+ transition:transform 180ms ease,filter 180ms ease,border-color 180ms ease,background-color 180ms ease,color 180ms ease,opacity 140ms ease;
+}
+@media(hover:hover) and (pointer:fine){
+ :is(.btn,#daw-player button,#daw-modal button):not(:disabled):hover{
+  transform:translateY(-2px);filter:brightness(1.12);border-color:var(--br);
+ }
+}
+:is(.btn,#daw-player button,#daw-modal button):not(:disabled):focus-visible{
+ transform:translateY(-2px);filter:brightness(1.12);border-color:var(--br);
+}
+:is(.btn,#daw-player button,#daw-modal button):not(:disabled):active{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+ :is(.btn,#daw-player button,#daw-modal button){transform:none!important}
+
+ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
